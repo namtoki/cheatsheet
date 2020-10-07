@@ -2,6 +2,7 @@
 image
 -----
 - docker (image) build
+  - -t image:tag
 - docker (image) history
   - イメージの生成履歴
 - docker (image) import
@@ -46,6 +47,9 @@ container
 - docker (container) rm
 - docker (container) run
   - 新しいコンテナでコマンドを実行する
+  - --rm
+  - -v ${pwd}:/app
+  - -w /app
 - docker (container) start
 - docker (container) stats
   - top コマンドのようなもの
