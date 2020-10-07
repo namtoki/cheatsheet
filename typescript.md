@@ -1,7 +1,11 @@
 
+Union Types
+===========
 
-型安全
-======
+
+
+型安全 (Guards)
+===============
 
 typeof type guards
 ------------------
@@ -36,4 +40,50 @@ instanceof type guards
 ----------------------
 
 ```TypeScript
+class A {
+    // ...
+}
+class B extends A {
+    // ...
+}
+class C extends A {
+    // ...
+}
+
+function fc(alph: A | B | C) {
+  if (alph instanceof B) {
+    // alph: B
+  }
+  // alph: A | C
+  if (alph instanceof C) {
+    // alph: C
+  }
+  // alph: A
+}
+```
+
+Tagged union
+------------
+
+```TypeScript
+type A = { name: 'A'; a: string }
+type B = { name: 'B'; b: number }
+type C = { name: 'C'; c: string }
+
+function fc(alph: A | B | C) {
+  switch(alph.name) {
+    case 'A':
+      // alph: A
+      return
+    case 'B':
+      // alph: B
+      return
+    case 'C':
+      // alph: C
+      return
+    default:
+      // alph: never
+      return
+  }
+}
 ```
